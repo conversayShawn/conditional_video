@@ -1,0 +1,25 @@
+{
+  "name": "v12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conversayShawn/conditional_video.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/conversayShawn/conditional_video/issues"
+  },
+  "homepage": "https://github.com/conversayShawn/conditional_video#readme",
+  "dependencies": {
+    "cypress": "^12.17.1"
+  },
+  "devDependencies": {
+    "playwright-webkit": "1.34"
+  }
+}
