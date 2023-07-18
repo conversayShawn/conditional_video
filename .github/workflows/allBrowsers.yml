@@ -38,7 +38,7 @@ jobs:
           record: true
           parallel: true
           group: "Electron"
-          tag: beta,videoEnabled,noConditional
+          tag: beta,videoFalse,noConditional
 
   chrome-browser:
     timeout-minutes: 15
@@ -59,7 +59,7 @@ jobs:
           record: true
           parallel: true
           group: "Chrome"
-          tag: beta,videoEnabled,noConditional
+          tag: beta,videoFalse,noConditional
 
   firefox-browser:
     timeout-minutes: 15
@@ -80,7 +80,7 @@ jobs:
           record: true
           parallel: true
           group: "Firefox"
-          tag: beta,videoEnabled,noConditional
+          tag: beta,videoFalse,noConditional
 
   edge-browser:
     timeout-minutes: 15
@@ -101,7 +101,7 @@ jobs:
           record: true
           parallel: true
           group: "Edge"
-          tag: beta,videoEnabled,noConditional
+          tag: beta,videoFalse,noConditional
 
   webkit-browser:
     timeout-minutes: 15
@@ -126,4 +126,4 @@ jobs:
           parallel: true
           group: "WebKit"
           config: "experimentalWebKitSupport=true"
-          tag: beta,videoEnabled,noConditional
+          tag: beta,videoFalse,noConditional
