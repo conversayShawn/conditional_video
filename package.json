@@ -1,0 +1,25 @@
+{
+  "name": "beta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conversayShawn/conditional_video.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/conversayShawn/conditional_video/issues"
+  },
+  "homepage": "https://github.com/conversayShawn/conditional_video#readme",
+  "dependencies": {
+    "cypress": "https://cdn.cypress.io/beta/npm/13.0.0/darwin-arm64/release/13.0.0-d2058a3e002e9f565ba67b5effc20b64defe0157/cypress.tgz"
+  },
+  "devDependencies": {
+    "playwright-webkit": "1.34"
+  }
+}
