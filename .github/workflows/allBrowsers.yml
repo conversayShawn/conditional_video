@@ -1,0 +1,129 @@
+name: Cypress Tests
+
+on: push
+
+env:
+  CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  COMMIT_INFO_MESSAGE: ${{ github.event.head_commit.message }} - All browsers
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress install
+        uses: cypress-io/github-action@v5
+        with:
+          runTests: false
+
+  electron-browser:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    needs: install
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: "Testing in Electron"
+        uses: cypress-io/github-action@v5
+        with:
+          record: true
+          parallel: true
+          group: "Electron"
+          tag: beta,videoEnabled,noConditional
+
+  chrome-browser:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    needs: install
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: "Testing in Chrome"
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          record: true
+          parallel: true
+          group: "Chrome"
+          tag: beta,videoEnabled,noConditional
+
+  firefox-browser:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    needs: install
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: "Testing in Firefox"
+        uses: cypress-io/github-action@v5
+        with:
+          browser: firefox
+          record: true
+          parallel: true
+          group: "Firefox"
+          tag: beta,videoEnabled,noConditional
+
+  edge-browser:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    needs: install
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: "Testing in Edge"
+        uses: cypress-io/github-action@v5
+        with:
+          browser: edge
+          record: true
+          parallel: true
+          group: "Edge"
+          tag: beta,videoEnabled,noConditional
+
+  webkit-browser:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    needs: install
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Playwright dependencies for WebKit
+        run: npx playwright install-deps webkit
+
+      - name: "Testing in WebKit"
+        uses: cypress-io/github-action@v5
+        with:
+          browser: webkit
+          record: true
+          parallel: true
+          group: "WebKit"
+          config: "experimentalWebKitSupport=true"
+          tag: beta,videoEnabled,noConditional
