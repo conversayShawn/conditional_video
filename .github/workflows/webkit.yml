@@ -23,7 +23,7 @@ jobs:
           record: true
           parallel: true
           browser: webkit
-          tag: beta,videoFalse,noConditional
+          tag: beta,videoTrue,withConditional
           config: "experimentalWebKitSupport=true"
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
